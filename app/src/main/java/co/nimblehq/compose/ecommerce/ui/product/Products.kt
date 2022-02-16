@@ -3,13 +3,11 @@ package co.nimblehq.compose.ecommerce.ui.product
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.GridCells
-import androidx.compose.foundation.lazy.LazyVerticalGrid
-import androidx.compose.foundation.lazy.items
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -19,20 +17,25 @@ import co.nimblehq.compose.ecommerce.R
 import co.nimblehq.compose.ecommerce.model.Product
 import co.nimblehq.compose.ecommerce.model.mockPopularProducts
 import co.nimblehq.compose.ecommerce.ui.theme.AppTextStyle
+import com.google.accompanist.flowlayout.FlowMainAxisAlignment
+import com.google.accompanist.flowlayout.FlowRow
+import com.google.accompanist.flowlayout.SizeMode
 
 @ExperimentalFoundationApi
 @Composable
 fun Products(
+    columnsPerRow: Int,
+    sectionTitle: String,
     products: List<Product>
 ) {
-
+    val itemPadding = 16.dp
     Column(
-        modifier = Modifier.padding(horizontal = 16.dp)
+        modifier = Modifier.padding(horizontal = itemPadding)
     ) {
         Box(modifier = Modifier.fillMaxWidth()) {
             Text(
                 modifier = Modifier.align(Alignment.CenterStart),
-                text = stringResource(R.string.home_popular_products_title),
+                text = sectionTitle,
                 style = AppTextStyle.productSectionHeader
             )
 
@@ -43,12 +46,27 @@ fun Products(
             )
         }
 
-        LazyVerticalGrid(
-            cells = GridCells.Fixed(2),
-            contentPadding = PaddingValues(top = 8.dp)
+        // Workaround solution: https://medium.com/tech-takeaways/scrollable-grid-view-with-jetpack-compose-aed9f2b9c382
+        val itemMaxWidth =
+            (LocalConfiguration.current.screenWidthDp.dp - (itemPadding * 2)) / columnsPerRow
+        FlowRow(
+            mainAxisSize = SizeMode.Expand,
+            mainAxisAlignment = FlowMainAxisAlignment.SpaceEvenly
         ) {
-            items(products) { item ->
-                ProductItem(item)
+            products.forEachIndexed { index, product ->
+                val modifier = if (index % 2 == 0) {
+                    Modifier
+                        .requiredWidth(itemMaxWidth)
+                        .padding(end = 8.dp)
+                } else {
+                    Modifier
+                        .requiredWidth(itemMaxWidth)
+                        .padding(start = 8.dp)
+                }
+                ProductItem(
+                    modifier = modifier,
+                    product
+                )
             }
         }
     }
@@ -58,14 +76,19 @@ fun Products(
 @Composable
 @Preview
 fun ProductsPreview() {
-    Products(products = mockPopularProducts)
+    Products(
+        columnsPerRow = 2,
+        sectionTitle = stringResource(R.string.home_popular_products_title),
+        products = mockPopularProducts
+    )
 }
 
 @Composable
 fun ProductItem(
+    modifier: Modifier,
     product: Product
 ) {
-    ConstraintLayout {
+    ConstraintLayout(modifier = modifier.padding(bottom = 8.dp)) {
         val (ivProduct, ivFavorite, tvProductName, tvProductPrice) = createRefs()
 
         Image(
@@ -119,6 +142,7 @@ fun ProductItem(
 @Preview
 fun ProductItemPreview() {
     ProductItem(
+        Modifier.fillMaxWidth(),
         Product(
             id = 1,
             name = "Pink Cube",
