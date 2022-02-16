@@ -63,7 +63,6 @@ fun BottomNavigationBarPreview() {
 //    BottomNavigationBar()
 }
 
-
 @Composable
 fun BottomNavigationItemIcon(
     item: NavigationItem,
