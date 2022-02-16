@@ -21,7 +21,9 @@ import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import co.nimblehq.compose.ecommerce.R
 import co.nimblehq.compose.ecommerce.model.categories
+import co.nimblehq.compose.ecommerce.model.mockPopularProducts
 import co.nimblehq.compose.ecommerce.ui.category.Categories
+import co.nimblehq.compose.ecommerce.ui.product.Products
 import co.nimblehq.compose.ecommerce.ui.theme.AppTextStyle
 import co.nimblehq.compose.ecommerce.ui.theme.Blue
 import co.nimblehq.compose.ecommerce.ui.theme.Purple600
@@ -190,7 +192,11 @@ fun HomeScreen() {
         Categories(categories)
 
         // Popular products
-//        Products(mockPopularProducts)
+        Products(
+            columnsPerRow = 2,
+            sectionTitle = stringResource(R.string.home_popular_products_title),
+            products = mockPopularProducts
+        )
     }
 }
 
