@@ -9,6 +9,7 @@
     <string name="home_product_price">From ฿8,000</string>
     <string name="home_product_item_price">฿%d</string>
     <string name="home_popular_products_title">Popular</string>
+    <string name="home_new_arrivals_products_title">New Arrivals</string>
 
     <string name="home_action_shop">SHOP</string>
     <string name="home_action_shop_all">Shop all</string>
