@@ -90,4 +90,11 @@ object AppTextStyle {
         textAlign = TextAlign.Center,
         fontSize = 13.sp
     )
+
+    val searchField = TextStyle(
+        color = Gray,
+        fontWeight = FontWeight.Normal,
+        textAlign = TextAlign.Start,
+        fontSize = 17.sp,
+    )
 }
