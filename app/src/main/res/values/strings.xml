@@ -38,4 +38,15 @@
     <string name="product_size_m">M</string>
     <string name="product_size_l">L</string>
     <string name="product_size_xl">XL</string>
+
+    <string name="settings_my_account">My Account</string>
+    <string name="settings_my_order">My Order</string>
+    <string name="settings_my_orders">My Orders</string>
+    <string name="settings_my_returns">My Returns</string>
+    <string name="settings_my_addresses">My Addresses</string>
+    <string name="settings_shipping_address">Shipping Address</string>
+    <string name="settings_billing_address">Billing Address</string>
+    <string name="settings_tax_invoice_address">Tax Invoice Address</string>
+    <string name="settings_my_wishlist">My Wishlist</string>
+    <string name="settings_log_out">Log out</string>
 </resources>
