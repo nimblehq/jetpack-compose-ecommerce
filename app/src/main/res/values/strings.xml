@@ -51,6 +51,7 @@
     <string name="settings_log_out">Log out</string>
 
     <string name="filters_title">Filters</string>
+    <string name="filters_applied">Filter (%d)</string>
     <string name="filters_close">Close</string>
     <string name="filters_reset">Reset</string>
     <string name="filters_sort_by">Sort by</string>
