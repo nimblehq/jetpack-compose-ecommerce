@@ -5,6 +5,8 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardActions
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Icon
 import androidx.compose.material.Text
@@ -18,6 +20,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -29,7 +32,9 @@ import co.nimblehq.compose.ecommerce.ui.theme.Gray2
 
 @ExperimentalFoundationApi
 @Composable
-fun SearchScreen() {
+fun SearchScreen(
+    onSearchProduct: (String) -> Unit
+) {
 
     Column(
         modifier = Modifier
@@ -79,6 +84,10 @@ fun SearchScreen() {
                         contentDescription = null // decorative element
                     )
                 },
+                keyboardOptions = KeyboardOptions(imeAction = ImeAction.Search),
+                keyboardActions = KeyboardActions(
+                    onSearch = { onSearchProduct(inputValue.value.text) }
+                ),
                 textStyle = AppTextStyle.searchField
             )
 
@@ -91,7 +100,11 @@ fun SearchScreen() {
         }
 
         // Shapes
-        Shapes(columnsPerRow = 2, shapes = mockShapes)
+        Shapes(
+            columnsPerRow = 2,
+            shapes = mockShapes,
+            onShapeClick = { shapeName -> onSearchProduct(shapeName) }
+        )
     }
 }
 

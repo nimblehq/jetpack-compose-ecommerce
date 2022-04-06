@@ -2,6 +2,7 @@ package co.nimblehq.compose.ecommerce.ui.shape
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -27,7 +28,8 @@ import com.google.accompanist.flowlayout.SizeMode
 @Composable
 fun Shapes(
     columnsPerRow: Int,
-    shapes: List<Shape>
+    shapes: List<Shape>,
+    onShapeClick: (String) -> Unit
 ) {
     val itemPadding = 16.dp
     Column(
@@ -51,7 +53,9 @@ fun Shapes(
                         .padding(start = 8.dp)
                 }
                 ShapeItem(
-                    modifier = modifier,
+                    modifier = modifier.clickable {
+                        onShapeClick(shape.name)
+                    },
                     shape
                 )
             }
@@ -66,7 +70,7 @@ fun ShapesPreview() {
     Shapes(
         columnsPerRow = 2,
         shapes = mockShapes
-    )
+    ) {}
 }
 
 @Composable

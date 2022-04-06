@@ -24,9 +24,10 @@ import co.nimblehq.compose.ecommerce.ui.theme.Gray5
 import co.nimblehq.compose.ecommerce.ui.theme.Purple600
 
 @ExperimentalFoundationApi
-@Preview
 @Composable
-fun Filters() {
+fun Filters(
+    upPress: () -> Unit
+) {
     Scaffold(
         topBar = {
             TopAppBar(
@@ -38,7 +39,7 @@ fun Filters() {
                     )
                 },
                 navigationIcon = {
-                    TextButton(onClick = {}) {
+                    TextButton(onClick = upPress) {
                         Text(
                             text = stringResource(id = R.string.filters_close)
                         )
@@ -131,14 +132,14 @@ fun Filters() {
 fun SortByItem(
     radioOptions: List<Pair<String, String>>
 ) {
-    val (selectedOption, onOptionSelected) = remember { mutableStateOf(radioOptions[0].first) }
-    radioOptions.forEach { (title, description) ->
+    val (selectedOption, onOptionSelected) = remember { mutableStateOf(0) }
+    radioOptions.forEachIndexed { index, (title, description) ->
         Row(
             modifier = Modifier
                 .fillMaxWidth()
                 .selectable(
-                    selected = (title == selectedOption),
-                    onClick = { onOptionSelected(title) }
+                    selected = (index == selectedOption),
+                    onClick = { onOptionSelected(index) }
                 )
         ) {
             Text(
@@ -166,9 +167,9 @@ fun SortByItem(
                     selectedColor = Purple600,
                     unselectedColor = Purple600
                 ),
-                selected = (title == selectedOption),
+                selected = (index == selectedOption),
                 onClick = {
-                    onOptionSelected(title)
+                    onOptionSelected(index)
                 }
             )
         }
@@ -211,3 +212,11 @@ fun FilterByItem(
         thickness = 1.dp
     )
 }
+
+@ExperimentalFoundationApi
+@Preview
+@Composable
+fun FiltersPreview() {
+    Filters {}
+}
+

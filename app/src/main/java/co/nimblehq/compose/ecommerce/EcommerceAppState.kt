@@ -26,8 +26,15 @@ class EcommerceAppState(
     private val bottomBarRoutes = bottomNavItems.map { it.route }
 
     val shouldShowBottomBar: Boolean
-        @Composable get() = navController
-            .currentBackStackEntryAsState().value?.destination?.route in bottomBarRoutes
+        @Composable get() {
+            val route = navController
+                .currentBackStackEntryAsState().value?.destination?.route.orEmpty()
+            val isTabItem = route in bottomBarRoutes
+            val isDetailPage = bottomBarRoutes.filter { tabRoute ->
+                route.startsWith(tabRoute, true)
+            }.isNullOrEmpty().not()
+            return isTabItem || isDetailPage
+        }
 
     val currentRoute: String?
         get() = navController.currentDestination?.route
@@ -54,6 +61,18 @@ class EcommerceAppState(
         // In order to discard duplicated navigation events, we check the Lifecycle
         if (from.lifecycleIsResumed()) {
             navController.navigate("${NavigationRoute.PRODUCT_DETAILS_ROUTE}/$productId")
+        }
+    }
+
+    fun navigateToSearchResult(query: String, from: NavBackStackEntry) {
+        if (from.lifecycleIsResumed()) {
+            navController.navigate("${NavigationRoute.SEARCH_RESULT_ROUTE}/$query")
+        }
+    }
+
+    fun navigateToFilters(from: NavBackStackEntry) {
+        if (from.lifecycleIsResumed()) {
+            navController.navigate(NavigationRoute.FILTERS_ROUTE)
         }
     }
 }
