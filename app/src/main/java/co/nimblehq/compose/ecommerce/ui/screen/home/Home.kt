@@ -31,7 +31,7 @@ import co.nimblehq.compose.ecommerce.utils.WindowSize
 @ExperimentalMaterialApi
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
-fun HomeScreen(windowSize: WindowSize) {
+fun HomeScreen(onProductClick: (Long) -> Unit, windowSize: WindowSize) {
     val isExpandedScreen = windowSize == WindowSize.Expanded
 
     Column(
@@ -90,21 +90,24 @@ fun HomeScreen(windowSize: WindowSize) {
         Products(
             columnsPerRow = 2,
             sectionTitle = stringResource(R.string.home_popular_products_title),
-            products = mockPopularProducts
+            products = mockPopularProducts,
+            onProductClick = { productId -> onProductClick(productId) }
         )
 
         // New arrivals products
         Products(
             columnsPerRow = 2,
             sectionTitle = stringResource(R.string.home_new_arrivals_products_title),
-            products = mockNewArrivalsProducts
+            products = mockNewArrivalsProducts,
+            onProductClick = { productId -> onProductClick(productId) }
         )
 
         // For you products
         Products(
             columnsPerRow = 2,
             sectionTitle = stringResource(R.string.home_for_you_products_title),
-            products = mockForYouProducts
+            products = mockForYouProducts,
+            onProductClick = { productId -> onProductClick(productId) }
         )
     }
 }
