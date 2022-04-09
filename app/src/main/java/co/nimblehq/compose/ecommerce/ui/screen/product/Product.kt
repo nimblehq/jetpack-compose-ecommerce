@@ -17,6 +17,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import co.nimblehq.compose.ecommerce.R
 import co.nimblehq.compose.ecommerce.ui.theme.AppTextStyle
+import co.nimblehq.compose.ecommerce.ui.theme.AppTextStyle.productEmptyCart
 
 @Composable
 fun ProductScreen() {
@@ -48,7 +49,8 @@ fun ProductScreen() {
                 modifier = Modifier
                     .align(Alignment.CenterHorizontally)
                     .padding(top = 16.dp),
-                text = stringResource(id = R.string.product_empty_cart)
+                text = stringResource(id = R.string.product_empty_cart),
+                style = productEmptyCart
             )
         }
     }
