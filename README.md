@@ -1,12 +1,30 @@
-# Git Repository Template
+# Jetpack Compose Ecommerce
 
-Project repository template to set up all public projects at [Nimble](https://nimblehq.co/)
+This is an sample Ecommerce app built with Jetpack Compose
+
+This sample showcases:
+- Multiple screen-size development with Jetpack Compose. Supporting phone, tablet and foldable devices.
+- Bottom tab navigation with [Navigation Compose](https://developer.android.com/jetpack/compose/navigation)
+
+### Screenshot 📸
+- Phone
+<img src="https://user-images.githubusercontent.com/6950766/163225087-5874fa54-33db-424e-854d-dc756867ec41.png" width=300/>
+
+- Tablet / Foldable device
+<img src="https://user-images.githubusercontent.com/6950766/163232682-2e749925-bc26-48d2-a2ac-70ca016e7d0f.png" width=450/>
+
+### Design
+- [Figma](https://www.figma.com/file/GXmbnWUEH9ZkrUluaPyedn/e-commerce?node-id=0%3A1)
+
+### References:
+- [Jetsnack](https://github.com/android/compose-samples/tree/main/Jetsnack)
+- [JetNews](https://github.com/android/compose-samples/tree/main/JetNews)
 
 ## Usage
 
 Clone the repository
 
-`git clone git@github.com:nimblehq/git-template.git`
+`git clone git@github.com:nimblehq/jetpack-compose-ecommerce.git`
 
 ## License
 
