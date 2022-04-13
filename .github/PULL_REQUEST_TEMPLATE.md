@@ -1,4 +1,4 @@
-https://github.com/nimblehq/git-template/issues/??
+https://github.com/nimblehq/jetpack-compose-ecommerce/issues/??
 
 ## What happened 👀
 
