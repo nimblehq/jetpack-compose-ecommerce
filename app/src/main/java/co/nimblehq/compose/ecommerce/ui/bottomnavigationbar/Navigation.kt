@@ -1,5 +1,6 @@
 package co.nimblehq.compose.ecommerce.ui.bottomnavigationbar
 
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
@@ -9,6 +10,7 @@ import co.nimblehq.compose.ecommerce.ui.screen.home.HomeScreen
 import co.nimblehq.compose.ecommerce.ui.screen.product.ProductScreen
 import co.nimblehq.compose.ecommerce.ui.screen.search.SearchScreen
 
+@OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun Navigation(navHostController: NavHostController) {
     NavHost(
