@@ -55,4 +55,11 @@ object AppTextStyle {
         textAlign = TextAlign.Center,
         fontSize = 15.sp,
     )
+
+    val category = TextStyle(
+        fontWeight = FontWeight.Normal,
+        color = Gray,
+        textAlign = TextAlign.Center,
+        fontSize = 13.sp
+    )
 }

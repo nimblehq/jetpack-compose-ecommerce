@@ -21,6 +21,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import co.nimblehq.compose.ecommerce.R
+import co.nimblehq.compose.ecommerce.model.categories
+import co.nimblehq.compose.ecommerce.ui.category.Categories
 import co.nimblehq.compose.ecommerce.ui.theme.AppTextStyle
 import co.nimblehq.compose.ecommerce.ui.theme.Blue
 import co.nimblehq.compose.ecommerce.ui.theme.Purple600
@@ -35,15 +37,15 @@ fun HomeScreen() {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(16.dp)
             .background(color = Color.White)
             .wrapContentSize(Alignment.TopCenter)
             .wrapContentSize(Alignment.Center)
     ) {
+        // Discovery
         ConstraintLayout(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(top = 50.dp, bottom = 21.dp)
+                .padding(top = 50.dp, bottom = 21.dp, start = 16.dp, end = 16.dp)
         ) {
             val (tvDiscover, bbProfile) = createRefs()
 
@@ -77,10 +79,12 @@ fun HomeScreen() {
             }
         }
 
+        // Collection
         ConstraintLayout(
             modifier = Modifier
                 .fillMaxWidth()
                 .height(386.dp)
+                .padding(horizontal = 16.dp)
                 .clip(shape)
                 .background(Blue)
         ) {
@@ -180,6 +184,9 @@ fun HomeScreen() {
                 )
             }
         }
+
+        // Category
+        Categories(categories)
     }
 }
 
