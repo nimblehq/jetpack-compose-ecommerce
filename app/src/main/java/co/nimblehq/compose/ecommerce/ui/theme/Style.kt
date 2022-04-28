@@ -139,4 +139,11 @@ object AppTextStyle {
         textAlign = TextAlign.Center,
         fontSize = 17.sp,
     )
+
+    val productEmptyCart = TextStyle(
+        color = BlackTrans45,
+        fontWeight = FontWeight.Light,
+        textAlign = TextAlign.Center,
+        fontSize = 15.sp,
+    )
 }

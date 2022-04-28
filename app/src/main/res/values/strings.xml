@@ -21,6 +21,8 @@
         <item quantity="other">%d items</item>
     </plurals>
 
+    <string name="product_my_cart">My Cart</string>
+    <string name="product_empty_cart">There are no items on your shopping cart.</string>
     <string name="product_about">About</string>
     <string name="product_add_to_cart">Add to cart</string>
     <string name="product_more_cubes">More cubes</string>
