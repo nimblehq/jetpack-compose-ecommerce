@@ -14,4 +14,10 @@
 
     <string name="home_action_shop">SHOP</string>
     <string name="home_action_shop_all">Shop all</string>
+
+    <string name="search_shop">Shop</string>
+    <plurals name="search_shape_total_item">
+        <item quantity="one">%d item</item>
+        <item quantity="other">%d items</item>
+    </plurals>
 </resources>
