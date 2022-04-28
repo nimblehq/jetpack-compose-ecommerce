@@ -146,4 +146,25 @@ object AppTextStyle {
         textAlign = TextAlign.Center,
         fontSize = 15.sp,
     )
+
+    val settingItem = TextStyle(
+        color = Gray6,
+        fontWeight = FontWeight.Normal,
+        textAlign = TextAlign.Start,
+        fontSize = 17.sp,
+    )
+
+    val settingFullName = TextStyle(
+        color = Color.Black,
+        fontWeight = FontWeight.SemiBold,
+        textAlign = TextAlign.Start,
+        fontSize = 17.sp,
+    )
+
+    val settingEmail = TextStyle(
+        color = Color.Black,
+        fontWeight = FontWeight.Light,
+        textAlign = TextAlign.Start,
+        fontSize = 15.sp,
+    )
 }
