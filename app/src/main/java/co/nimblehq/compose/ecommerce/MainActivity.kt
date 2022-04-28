@@ -15,6 +15,8 @@ import androidx.navigation.compose.rememberNavController
 import co.nimblehq.compose.ecommerce.ui.bottomnavigationbar.BottomNavigationBar
 import co.nimblehq.compose.ecommerce.ui.bottomnavigationbar.Navigation
 import co.nimblehq.compose.ecommerce.ui.bottomnavigationbar.NavigationItem
+import co.nimblehq.compose.ecommerce.utils.WindowSize
+import co.nimblehq.compose.ecommerce.utils.rememberWindowSizeClass
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,14 +25,15 @@ class MainActivity : ComponentActivity() {
         WindowCompat.setDecorFitsSystemWindows(window, true)
 
         setContent {
-            MainScreen()
+            val windowSize = rememberWindowSizeClass()
+            MainScreen(windowSize)
         }
     }
 }
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun MainScreen() {
+fun MainScreen(windowSize: WindowSize) {
     val navController = rememberNavController()
     val tabItems = listOf(
         NavigationItem.Home,
@@ -43,7 +46,7 @@ fun MainScreen() {
     ) { innerPadding ->
         // Fix the BottomNavigation bar overlap the content https://stackoverflow.com/a/66574166
         Box(modifier = Modifier.padding(innerPadding)) {
-            Navigation(navController)
+            Navigation(navController, windowSize)
         }
     }
 }
@@ -51,5 +54,5 @@ fun MainScreen() {
 @Preview(showBackground = true)
 @Composable
 fun MainScreenPreview() {
-    MainScreen()
+//    MainScreen(windowSizeClass)
 }
