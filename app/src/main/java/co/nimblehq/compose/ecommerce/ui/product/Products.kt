@@ -147,7 +147,7 @@ fun ProductItemPreview() {
             id = 1,
             name = "Pink Cube",
             price = 8000,
-            image = R.drawable.ic_shirt
+            image = R.drawable.ic_shirt_honey_cube
         )
     )
 }

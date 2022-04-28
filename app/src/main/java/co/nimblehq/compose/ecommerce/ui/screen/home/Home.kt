@@ -18,6 +18,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import co.nimblehq.compose.ecommerce.R
+import co.nimblehq.compose.ecommerce.model.mockForYouProducts
+import co.nimblehq.compose.ecommerce.model.mockNewArrivalsProducts
 import co.nimblehq.compose.ecommerce.model.mockPopularProducts
 import co.nimblehq.compose.ecommerce.ui.collection.Collection
 import co.nimblehq.compose.ecommerce.ui.product.Products
@@ -89,6 +91,20 @@ fun HomeScreen(windowSize: WindowSize) {
             columnsPerRow = 2,
             sectionTitle = stringResource(R.string.home_popular_products_title),
             products = mockPopularProducts
+        )
+
+        // New arrivals products
+        Products(
+            columnsPerRow = 2,
+            sectionTitle = stringResource(R.string.home_new_arrivals_products_title),
+            products = mockNewArrivalsProducts
+        )
+
+        // For you products
+        Products(
+            columnsPerRow = 2,
+            sectionTitle = stringResource(R.string.home_for_you_products_title),
+            products = mockForYouProducts
         )
     }
 }

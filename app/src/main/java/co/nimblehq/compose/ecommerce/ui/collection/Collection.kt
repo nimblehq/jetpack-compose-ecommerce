@@ -69,7 +69,7 @@ fun SuggestedForYouCard(modifier: Modifier) {
                 }
                 .size(419.dp, 378.dp)
                 .padding(top = 92.dp, start = 32.dp),
-            painter = painterResource(id = R.drawable.ic_shirt),
+            painter = painterResource(id = R.drawable.ic_shirt_honey_cube),
             contentDescription = "collection"
         )
 
