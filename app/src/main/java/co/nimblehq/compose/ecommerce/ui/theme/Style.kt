@@ -97,4 +97,46 @@ object AppTextStyle {
         textAlign = TextAlign.Start,
         fontSize = 17.sp,
     )
+
+    val productDetailHeader = TextStyle(
+        color = Gray,
+        fontWeight = FontWeight.SemiBold,
+        textAlign = TextAlign.Center,
+        fontSize = 22.sp,
+    )
+
+    val productDetailAbout = TextStyle(
+        color = Gray3,
+        fontWeight = FontWeight.Normal,
+        textAlign = TextAlign.Start,
+        fontSize = 17.sp,
+    )
+
+    val productSize = TextStyle(
+        color = Gray3,
+        fontWeight = FontWeight.Normal,
+        textAlign = TextAlign.Center,
+        fontSize = 17.sp,
+    )
+
+    val productDetailName = TextStyle(
+        color = Gray,
+        fontWeight = FontWeight.SemiBold,
+        textAlign = TextAlign.Center,
+        fontSize = 28.sp,
+    )
+
+    val productDetailPrice = TextStyle(
+        color = Gray,
+        fontWeight = FontWeight.Normal,
+        textAlign = TextAlign.Center,
+        fontSize = 22.sp,
+    )
+
+    val productDetailAddToCart = TextStyle(
+        color = Color.White,
+        fontWeight = FontWeight.SemiBold,
+        textAlign = TextAlign.Center,
+        fontSize = 17.sp,
+    )
 }

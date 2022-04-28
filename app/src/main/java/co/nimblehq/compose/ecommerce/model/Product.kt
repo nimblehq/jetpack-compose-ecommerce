@@ -66,3 +66,18 @@ val mockForYouProducts = listOf(
                 image = R.drawable.ic_shirt_indigo_cube
         )
 )
+
+val mockMoreCubesProducts = listOf(
+        Product(
+                id = 1,
+                name = "Indigo Cube",
+                price = 8000,
+                image = R.drawable.ic_shirt_indigo_cube
+        ),
+        Product(
+                id = 2,
+                name = "Honey Cube",
+                price = 5000,
+                image = R.drawable.ic_shirt_honey_cube
+        )
+)
