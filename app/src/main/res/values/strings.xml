@@ -1,10 +1,15 @@
 <resources>
     <string name="app_name">ComposeEcommerce</string>
 
+    <!-- Home -->
     <string name="home_discover">Discover</string>
     <string name="home_suggested_for_you">SUGGESTED FOR YOU</string>
     <string name="home_collection">Poly Cube 2021 Collection</string>
     <string name="home_product_name">Poly Cubes</string>
     <string name="home_product_price">From ฿8,000</string>
+    <string name="home_product_item_price">฿%d</string>
+    <string name="home_popular_products_title">Popular</string>
+
     <string name="home_action_shop">SHOP</string>
+    <string name="home_action_shop_all">Shop all</string>
 </resources>

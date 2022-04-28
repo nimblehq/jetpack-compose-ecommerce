@@ -1,7 +1,6 @@
 package co.nimblehq.compose.ecommerce.ui.screen.home
 
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
+import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.BadgeBox
@@ -22,12 +21,15 @@ import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import co.nimblehq.compose.ecommerce.R
 import co.nimblehq.compose.ecommerce.model.categories
+import co.nimblehq.compose.ecommerce.model.mockPopularProducts
 import co.nimblehq.compose.ecommerce.ui.category.Categories
+import co.nimblehq.compose.ecommerce.ui.product.Products
 import co.nimblehq.compose.ecommerce.ui.theme.AppTextStyle
 import co.nimblehq.compose.ecommerce.ui.theme.Blue
 import co.nimblehq.compose.ecommerce.ui.theme.Purple600
 import co.nimblehq.compose.ecommerce.ui.theme.Red
 
+@ExperimentalFoundationApi
 @ExperimentalMaterialApi
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
@@ -37,6 +39,7 @@ fun HomeScreen() {
     Column(
         modifier = Modifier
             .fillMaxSize()
+            .verticalScroll(rememberScrollState())
             .background(color = Color.White)
             .wrapContentSize(Alignment.TopCenter)
             .wrapContentSize(Alignment.Center)
@@ -187,9 +190,17 @@ fun HomeScreen() {
 
         // Category
         Categories(categories)
+
+        // Popular products
+        Products(
+            columnsPerRow = 2,
+            sectionTitle = stringResource(R.string.home_popular_products_title),
+            products = mockPopularProducts
+        )
     }
 }
 
+@ExperimentalFoundationApi
 @ExperimentalMaterialApi
 @Preview(showBackground = true)
 @Composable
