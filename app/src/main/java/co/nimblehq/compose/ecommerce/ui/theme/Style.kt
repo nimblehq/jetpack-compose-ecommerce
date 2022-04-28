@@ -167,4 +167,32 @@ object AppTextStyle {
         textAlign = TextAlign.Start,
         fontSize = 15.sp,
     )
+
+    val filterHeader = TextStyle(
+        color = Gray,
+        fontWeight = FontWeight.SemiBold,
+        textAlign = TextAlign.Center,
+        fontSize = 22.sp,
+    )
+
+    val filterItem = TextStyle(
+        color = Gray6,
+        fontWeight = FontWeight.Normal,
+        textAlign = TextAlign.Start,
+        fontSize = 17.sp,
+    )
+
+    val filterDescription = TextStyle(
+        color = Gray3,
+        fontWeight = FontWeight.Normal,
+        textAlign = TextAlign.Start,
+        fontSize = 17.sp,
+    )
+
+    val productViewResult = TextStyle(
+        color = Color.White,
+        fontWeight = FontWeight.SemiBold,
+        textAlign = TextAlign.Center,
+        fontSize = 17.sp,
+    )
 }

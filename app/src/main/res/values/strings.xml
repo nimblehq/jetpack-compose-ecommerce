@@ -49,4 +49,17 @@
     <string name="settings_tax_invoice_address">Tax Invoice Address</string>
     <string name="settings_my_wishlist">My Wishlist</string>
     <string name="settings_log_out">Log out</string>
+
+    <string name="filters_title">Filters</string>
+    <string name="filters_close">Close</string>
+    <string name="filters_reset">Reset</string>
+    <string name="filters_sort_by">Sort by</string>
+    <string name="filters_sort_by_new">New</string>
+    <string name="filters_sort_by_price">Price</string>
+    <string name="filters_sort_by_price_high_to_low">High to low</string>
+    <string name="filters_sort_by_price_low_to_high">Low to high</string>
+    <string name="filters_filter_by">Filter by</string>
+    <string name="filters_filter_by_categories">Categories</string>
+    <string name="filters_filter_by_colors">Colors</string>
+    <string name="filters_view_results">View results</string>
 </resources>
