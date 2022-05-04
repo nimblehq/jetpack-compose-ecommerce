@@ -2,6 +2,7 @@ package co.nimblehq.compose.ecommerce.ui.product
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -26,7 +27,8 @@ import com.google.accompanist.flowlayout.SizeMode
 fun Products(
     columnsPerRow: Int,
     sectionTitle: String,
-    products: List<Product>
+    products: List<Product>,
+    onProductClick: (Long) -> Unit
 ) {
     val itemPadding = 16.dp
     Column(
@@ -65,7 +67,8 @@ fun Products(
                 }
                 ProductItem(
                     modifier = modifier,
-                    product
+                    product = product,
+                    onProductClick = onProductClick
                 )
             }
         }
@@ -79,16 +82,22 @@ fun ProductsPreview() {
     Products(
         columnsPerRow = 2,
         sectionTitle = stringResource(R.string.home_popular_products_title),
-        products = mockPopularProducts
+        products = mockPopularProducts,
+        onProductClick = {}
     )
 }
 
 @Composable
 fun ProductItem(
     modifier: Modifier,
-    product: Product
+    product: Product,
+    onProductClick: (Long) -> Unit
 ) {
-    ConstraintLayout(modifier = modifier.padding(bottom = 8.dp)) {
+    ConstraintLayout(modifier = modifier
+        .padding(bottom = 8.dp)
+        .clickable {
+            onProductClick(product.id)
+        }) {
         val (ivProduct, ivFavorite, tvProductName, tvProductPrice) = createRefs()
 
         Image(
@@ -149,5 +158,5 @@ fun ProductItemPreview() {
             price = 8000,
             image = R.drawable.ic_shirt_honey_cube
         )
-    )
+    ) {}
 }

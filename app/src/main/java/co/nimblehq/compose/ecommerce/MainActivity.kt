@@ -11,10 +11,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.view.WindowCompat
-import androidx.navigation.compose.rememberNavController
+import androidx.navigation.compose.NavHost
+import co.nimblehq.compose.ecommerce.navigation.NavigationRoute
+import co.nimblehq.compose.ecommerce.navigation.appNavGraph
 import co.nimblehq.compose.ecommerce.ui.bottomnavigationbar.BottomNavigationBar
-import co.nimblehq.compose.ecommerce.ui.bottomnavigationbar.Navigation
-import co.nimblehq.compose.ecommerce.ui.bottomnavigationbar.NavigationItem
+import co.nimblehq.compose.ecommerce.ui.bottomnavigationbar.bottomNavItems
 import co.nimblehq.compose.ecommerce.utils.WindowSize
 import co.nimblehq.compose.ecommerce.utils.rememberWindowSizeClass
 
@@ -34,19 +35,30 @@ class MainActivity : ComponentActivity() {
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun MainScreen(windowSize: WindowSize) {
-    val navController = rememberNavController()
-    val tabItems = listOf(
-        NavigationItem.Home,
-        NavigationItem.Search,
-        NavigationItem.Product,
-        NavigationItem.Account
-    )
+    val appState = rememberEcommerceAppState()
     Scaffold(
-        bottomBar = { BottomNavigationBar(items = tabItems, navController = navController) }
+        bottomBar = {
+            if (appState.shouldShowBottomBar) {
+                BottomNavigationBar(
+                    items = bottomNavItems,
+                    navController = appState.navController,
+                    navigateToRoute = appState::navigateToBottomBarRoute
+                )
+            }
+        }
     ) { innerPadding ->
         // Fix the BottomNavigation bar overlap the content https://stackoverflow.com/a/66574166
         Box(modifier = Modifier.padding(innerPadding)) {
-            Navigation(navController, windowSize)
+            NavHost(
+                navController = appState.navController,
+                startDestination = NavigationRoute.MAIN_ROUTE
+            ) {
+                appNavGraph(
+                    onProductSelected = appState::navigateToProductDetail,
+                    upPress = appState::upPress,
+                    windowSize = windowSize
+                )
+            }
         }
     }
 }

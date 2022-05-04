@@ -16,7 +16,11 @@ import co.nimblehq.compose.ecommerce.ui.theme.Purple700
 import co.nimblehq.compose.ecommerce.ui.theme.WhiteTrans25
 
 @Composable
-fun BottomNavigationBar(items: List<NavigationItem>, navController: NavController) {
+fun BottomNavigationBar(
+    items: List<BottomNavItem>,
+    navController: NavController,
+    navigateToRoute: (String) -> Unit
+) {
     BottomNavigation(
         backgroundColor = Color.White,
         contentColor = Purple700
@@ -35,23 +39,7 @@ fun BottomNavigationBar(items: List<NavigationItem>, navController: NavControlle
                 unselectedContentColor = WhiteTrans25,
                 alwaysShowLabel = false,
                 selected = currentRoute == item.route,
-                onClick = {
-                    navController.navigate(item.route) {
-                        // Pop up to the start destination of the graph to
-                        // avoid building up a large stack of destinations
-                        // on the back stack as users select items
-                        navController.graph.startDestinationRoute?.let { route ->
-                            popUpTo(route) {
-                                saveState = true
-                            }
-                        }
-                        // Avoid multiple copies of the same destination when
-                        // reselecting the same item
-                        launchSingleTop = true
-                        // Restore state when reselecting a previously selected item
-                        restoreState = true
-                    }
-                }
+                onClick = { navigateToRoute(item.route) }
             )
         }
     }
@@ -65,7 +53,7 @@ fun BottomNavigationBarPreview() {
 
 @Composable
 fun BottomNavigationItemIcon(
-    item: NavigationItem,
+    item: BottomNavItem,
     selected: Boolean
 ) {
     val icon = painterResource(item.iconResId)

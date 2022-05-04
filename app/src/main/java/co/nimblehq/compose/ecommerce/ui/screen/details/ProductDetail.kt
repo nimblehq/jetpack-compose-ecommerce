@@ -18,8 +18,8 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import co.nimblehq.compose.ecommerce.R
-import co.nimblehq.compose.ecommerce.model.Product
 import co.nimblehq.compose.ecommerce.model.mockMoreCubesProducts
+import co.nimblehq.compose.ecommerce.model.mockPopularProducts
 import co.nimblehq.compose.ecommerce.ui.product.ProductColor
 import co.nimblehq.compose.ecommerce.ui.product.ProductSize
 import co.nimblehq.compose.ecommerce.ui.product.Products
@@ -28,13 +28,16 @@ import co.nimblehq.compose.ecommerce.ui.theme.Gray5
 
 @ExperimentalFoundationApi
 @Composable
-fun ProductDetail(product: Product) {
+fun ProductDetail(
+    productId: Long,
+    upPress: () -> Unit
+) {
     Scaffold(
         topBar = {
             TopAppBar(
                 title = {},
                 navigationIcon = {
-                    IconButton(onClick = {}) {
+                    IconButton(onClick = upPress) {
                         Icon(Icons.Outlined.ArrowBack, null)
                     }
                 },
@@ -60,6 +63,8 @@ fun ProductDetail(product: Product) {
             )
         }
     ) {
+        // FIXME Show the Pink Cube product for detail page as dummy data
+        val product = mockPopularProducts.first()
         Column(
             modifier = Modifier
                 .fillMaxSize()
@@ -79,7 +84,7 @@ fun ProductDetail(product: Product) {
                 modifier = Modifier
                     .align(Alignment.CenterHorizontally)
                     .padding(top = 32.dp),
-                text = product.name,
+                text = product?.name.orEmpty(),
                 style = AppTextStyle.productDetailName
             )
 
@@ -89,7 +94,7 @@ fun ProductDetail(product: Product) {
                     .padding(top = 4.dp),
                 text = stringResource(
                     id = R.string.home_product_item_price,
-                    formatArgs = arrayOf(product.price)
+                    formatArgs = arrayOf(product?.price ?: 0)
                 ),
                 style = AppTextStyle.productDetailPrice
             )
@@ -161,7 +166,8 @@ fun ProductDetail(product: Product) {
             Products(
                 columnsPerRow = 2,
                 sectionTitle = stringResource(id = R.string.product_more_cubes),
-                products = mockMoreCubesProducts
+                products = mockMoreCubesProducts,
+                onProductClick = {}
             )
         }
     }
