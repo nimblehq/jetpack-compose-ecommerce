@@ -195,4 +195,18 @@ object AppTextStyle {
         textAlign = TextAlign.Center,
         fontSize = 17.sp,
     )
+
+    val searchResultHeader = TextStyle(
+        color = Gray,
+        fontWeight = FontWeight.SemiBold,
+        textAlign = TextAlign.Center,
+        fontSize = 34.sp,
+    )
+
+    val searchResultFilter = TextStyle(
+        color = Purple600,
+        fontWeight = FontWeight.Normal,
+        textAlign = TextAlign.Center,
+        fontSize = 17.sp,
+    )
 }

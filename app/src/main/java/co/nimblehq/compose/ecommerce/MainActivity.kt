@@ -55,6 +55,8 @@ fun MainScreen(windowSize: WindowSize) {
             ) {
                 appNavGraph(
                     onProductSelected = appState::navigateToProductDetail,
+                    onSearchProduct = appState::navigateToSearchResult,
+                    onFilterClick = appState::navigateToFilters,
                     upPress = appState::upPress,
                     windowSize = windowSize
                 )
