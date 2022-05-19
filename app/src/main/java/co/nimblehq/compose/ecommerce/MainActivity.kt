@@ -25,8 +25,11 @@ import co.nimblehq.compose.ecommerce.utils.rememberWindowSizeClass
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         WindowCompat.setDecorFitsSystemWindows(window, true)
+        setContent {
+            val windowSize = rememberWindowSizeClass()
+            MainScreen(windowSize)
+        }
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
             window.insetsController?.setSystemBarsAppearance(
                 WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS,
@@ -34,11 +37,6 @@ class MainActivity : ComponentActivity() {
             )
         } else {
             window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
-        }
-
-        setContent {
-            val windowSize = rememberWindowSizeClass()
-            MainScreen(windowSize)
         }
     }
 }
